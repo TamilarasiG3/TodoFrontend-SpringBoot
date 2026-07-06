@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h2>Login</h2>
+
+    <input type="email"
+           id="email"
+           placeholder="Email"
+           required>
+
+    <input type="password"
+           id="password"
+           placeholder="Password"
+           required
+           onkeypress="if(event.key==='Enter') login()">
+
+    <button onclick="login()">Login</button>
+
+    <p>
+        Don't have an account?
+        <a href="register.html">Register</a>
+    </p>
+
+</div>
+
+<script src="main.js"></script>
+
+</body>
+</html>

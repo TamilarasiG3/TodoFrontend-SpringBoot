@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Todo List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h2>My Todos</h2>
+
+    <button class="logout-btn"
+            onclick="logout()">
+        Logout
+    </button>
+
+    <div id="todo-list" class="todo-cards">
+        <p id="empty-message">
+            Loading your todos...
+        </p>
+    </div>
+
+    <div class="add-todo">
+
+        <input type="text"
+               id="new-todo"
+               placeholder="Add a new todo"
+               onkeypress="if(event.key==='Enter') addTodo()">
+
+        <button onclick="addTodo()">
+            Add
+        </button>
+
+    </div>
+
+</div>
+
+<script src="main.js"></script>
+
+</body>
+</html>
