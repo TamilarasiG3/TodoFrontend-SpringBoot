@@ -1,245 +1,131 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
+    font-family:Arial;
 }
 
+
 body{
-    min-height:100vh;
+
+    height:100vh;
+    background:#f1f5f9;
+
     display:flex;
     justify-content:center;
     align-items:center;
-    background:#0f0f0f;
-    padding:20px;
+
 }
 
-/* Main Container */
 
 .container{
-    width:100%;
-    max-width:700px;
-    background:#1a1a1a;
-    border-radius:20px;
+
+    width:400px;
+
+    background:white;
+
     padding:30px;
-    box-shadow:0 0 30px rgba(0,0,0,0.6);
-    animation:fadeIn .8s ease;
+
+    border-radius:10px;
+
+    box-shadow:0 5px 20px #ccc;
+
 }
 
-@keyframes fadeIn{
-    from{
-        opacity:0;
-        transform:translateY(30px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
 
-h2{
+h1{
+
     text-align:center;
-    color:white;
-    margin-bottom:25px;
-    font-size:32px;
+    margin-bottom:20px;
+
 }
 
-/* Inputs */
 
-input[type="email"],
-input[type="password"],
-input[type="text"]{
+input{
+
     width:100%;
-    height:50px;
-    padding:0 15px;
-    border:none;
-    border-radius:12px;
-    background:#2a2a2a;
-    color:white;
-    font-size:15px;
-    transition:.3s;
+
+    padding:12px;
+
+    margin:10px 0;
+
 }
 
-input::placeholder{
-    color:#888;
-}
 
-input:focus{
-    outline:none;
-    box-shadow:0 0 12px rgba(0,200,150,.4);
-}
+button{
 
-/* Login/Register Button */
-
-.container > button{
     width:100%;
-    height:50px;
-    border:none;
-    border-radius:12px;
-    background:#00c896;
+
+    padding:12px;
+
+    background:#2563eb;
+
     color:white;
-    font-size:16px;
-    font-weight:600;
+
+    border:none;
+
+    border-radius:5px;
+
     cursor:pointer;
-    transition:.3s;
+
 }
 
-.container > button:hover{
-    transform:translateY(-2px);
-    background:#00b184;
-}
 
-/* Links */
+.header{
 
-p{
-    text-align:center;
-    color:#999;
-    margin-top:15px;
-}
-
-a{
-    color:#00c896;
-    text-decoration:none;
-}
-
-a:hover{
-    text-decoration:underline;
-}
-
-/* Add Todo Section */
-
-.add-todo{
     display:flex;
-    align-items:center;
-    gap:12px;
-    width:100%;
-    margin-bottom:25px;
+
+    justify-content:space-between;
+
 }
 
-.add-todo input{
-    flex:1;
-    margin:0;
+
+.logout{
+
+    width:auto;
+
+    background:red;
+
 }
 
-.add-todo button{
-    width:120px;
-    height:50px;
-    border:none;
-    border-radius:12px;
-    background:#00c896;
-    color:white;
-    font-size:15px;
-    font-weight:600;
-    cursor:pointer;
-    transition:.3s;
-}
 
-.add-todo button:hover{
-    background:#00b184;
-    transform:translateY(-2px);
-}
+.todo-input{
 
-/* Todo List */
-
-.todo-cards{
     display:flex;
-    flex-direction:column;
-    gap:12px;
+
+    gap:10px;
+
 }
 
-/* Todo Card */
 
-.todo-card{
+.todo-input button{
+
+    width:100px;
+
+}
+
+
+li{
+
+    list-style:none;
+
+    background:#eee;
+
+    padding:12px;
+
+    margin-top:10px;
+
     display:flex;
-    align-items:center;
-    gap:15px;
-    width:100%;
-    min-height:65px;
-    padding:15px;
-    background:#242424;
-    border-radius:12px;
-    border:1px solid #333;
-    animation:slideUp .4s ease;
-    transition:.3s;
+
+    justify-content:space-between;
+
 }
 
-.todo-card:hover{
-    transform:translateX(5px);
-    border-color:#00c896;
-}
 
-@keyframes slideUp{
-    from{
-        opacity:0;
-        transform:translateY(20px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
+.delete{
 
-.todo-card input[type="checkbox"]{
-    width:20px;
-    height:20px;
-    margin:0;
-    cursor:pointer;
-}
+    width:auto;
 
-.todo-card span{
-    flex:1;
-    color:white;
-    font-size:16px;
-    font-weight:500;
-}
+    background:red;
 
-.todo-card button{
-    width:90px;
-    height:40px;
-    border:none;
-    border-radius:8px;
-    background:#ff4444;
-    color:white;
-    font-weight:600;
-    cursor:pointer;
-    transition:.3s;
-}
-
-.todo-card button:hover{
-    background:#e53935;
-}
-
-/* Empty Message */
-
-#empty-message{
-    text-align:center;
-    color:#888;
-    padding:20px;
-}
-
-/* Mobile */
-
-@media(max-width:600px){
-
-    .container{
-        padding:20px;
-    }
-
-    .add-todo{
-        flex-direction:column;
-    }
-
-    .add-todo button{
-        width:100%;
-    }
-
-    .todo-card{
-        flex-wrap:wrap;
-    }
-
-    .todo-card button{
-        width:100%;
-    }
 }
