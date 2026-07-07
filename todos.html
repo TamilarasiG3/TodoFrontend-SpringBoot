@@ -3,41 +3,29 @@
 
 <head>
 
-<title>Todos</title>
+<title>My Todos</title>
 
 <link rel="stylesheet" href="style.css">
 
 </head>
 
 
-<body onload="checkLogin()">
+<body>
 
 
-<div class="container">
+<div class="container todo-container">
 
 
-<div class="header">
-
-<h1>
+<h2>
 My Todos
-</h1>
+</h2>
 
 
-<button class="logout"
-onclick="logout()">
-Logout
-</button>
+<div class="add-todo">
 
-
-</div>
-
-
-
-<div class="todo-input">
-
-
-<input id="todoInput"
-       placeholder="Enter task">
+<input 
+id="new-todo"
+placeholder="Add a new todo">
 
 
 <button onclick="addTodo()">
@@ -49,12 +37,18 @@ Add
 
 
 
-<ul id="todoList"></ul>
-
-
+<div id="todo-list">
 
 </div>
 
+
+
+<button class="logout" onclick="logout()">
+Logout
+</button>
+
+
+</div>
 
 
 <script src="main.js"></script>
