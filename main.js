@@ -1,95 +1,143 @@
 const SERVER_URL = "https://todo-prnm.onrender.com";
 
-function getToken() {
+
+function getToken(){
+
     return localStorage.getItem("token");
+
 }
 
-// ================= LOGIN =================
 
-function login() {
+// LOGIN
+
+function login(){
 
     const email =
-        document.getElementById("email").value;
+    document.getElementById("email").value;
+
 
     const password =
-        document.getElementById("password").value;
+    document.getElementById("password").value;
 
-    if (!email || !password) {
+
+    if(!email || !password){
+
         alert("Please fill all fields");
         return;
+
     }
 
-    fetch(`${SERVER_URL}/auth/login`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
+
+    fetch(`${SERVER_URL}/auth/login`,{
+
+        method:"POST",
+
+        headers:{
+            "Content-Type":"application/json"
         },
-        body: JSON.stringify({
+
+        body:JSON.stringify({
             email,
             password
         })
-    })
-    .then(response => {
 
-        if (!response.ok) {
-            throw new Error("Invalid email or password");
+    })
+
+    .then(res=>{
+
+        if(!res.ok){
+
+            throw new Error("Invalid credentials");
+
         }
 
-        return response.json();
+        return res.json();
+
     })
-    .then(data => {
 
-        if (!data.token) {
-            throw new Error("Token not received");
-        }
+    .then(data=>{
 
-        localStorage.setItem("token", data.token);
+
+        localStorage.setItem(
+            "token",
+            data.token
+        );
+
 
         alert("Login Successful");
 
-        window.location.href = "todos.html";
+
+        window.location.href="todos.html";
+
+
     })
-    .catch(error => {
-        alert(error.message);
+
+    .catch(err=>{
+
+        alert(err.message);
+
     });
+
+
 }
 
-// ================= REGISTER =================
 
-function register() {
+
+// REGISTER
+
+function register(){
+
 
     const email =
-        document.getElementById("email").value;
+    document.getElementById("email").value;
+
 
     const password =
-        document.getElementById("password").value;
+    document.getElementById("password").value;
 
-    if (!email || !password) {
-        alert("Please fill all fields");
-        return;
-    }
 
-    fetch(`${SERVER_URL}/auth/register`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
+
+    fetch(`${SERVER_URL}/auth/register`,{
+
+        method:"POST",
+
+        headers:{
+            "Content-Type":"application/json"
         },
-        body: JSON.stringify({
+
+        body:JSON.stringify({
+
             email,
             password
-        })
-    })
-    .then(response => {
 
-        if (!response.ok) {
+        })
+
+    })
+
+    .then(res=>{
+
+        if(!res.ok){
+
             throw new Error("Registration failed");
+
         }
+
+        return res.json();
+
+    })
+
+    .then(data=>{
 
         alert("Registration successful");
 
-        window.location.href = "index.html";
+        window.location.href="index.html";
+
     })
-    .catch(error => {
-        alert(error.message);
+
+    .catch(err=>{
+
+        alert(err.message);
+
     });
+
 }
