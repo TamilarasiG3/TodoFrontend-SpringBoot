@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 
 <head>
 
@@ -11,7 +9,7 @@
 content="width=device-width,initial-scale=1.0">
 
 
-<title>My Todos</title>
+<title>Create Account</title>
 
 
 <link rel="stylesheet" href="style.css">
@@ -20,64 +18,57 @@ content="width=device-width,initial-scale=1.0">
 </head>
 
 
-
-<body onload="loadTodos()">
-
+<body>
 
 
 <div class="background"></div>
 
 
-<div class="card todo-card">
-
-
-
-<div class="header">
+<div class="card">
 
 
 <h1>
-My Tasks ✅
+Create Account 🚀
 </h1>
 
 
-<button class="logout"
-onclick="logout()">
+<p class="subtitle">
+Start managing your tasks
+</p>
 
-Logout
-
-</button>
-
-
-</div>
-
-
-
-
-<div class="add-box">
 
 
 <input
-id="todoTitle"
-placeholder="What needs to be done?">
+id="email"
+type="email"
+placeholder="Email Address">
 
 
-<button onclick="addTodo()">
+<input
+id="password"
+type="password"
+placeholder="Password">
 
-+
+
+<button onclick="register()">
+
+Register
 
 </button>
 
 
-</div>
 
+<p>
 
+Already have account?
 
+<a href="index.html">
 
-<ul id="todoList">
+Login
 
-</ul>
+</a>
 
-
+</p>
 
 
 </div>

@@ -1,379 +1,131 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
-
 *{
-
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial;
 }
 
 
 body{
 
-min-height:100vh;
+    height:100vh;
+    background:#f1f5f9;
 
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-overflow:hidden;
-
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
 }
 
 
-.background{
+.container{
 
+    width:400px;
 
-position:absolute;
+    background:white;
 
-width:100%;
+    padding:30px;
 
-height:100%;
+    border-radius:10px;
 
-background:
-linear-gradient(
-135deg,
-#667eea,
-#764ba2
-);
-
-
-animation:bgmove 8s infinite alternate;
-
+    box-shadow:0 5px 20px #ccc;
 
 }
-
-
-@keyframes bgmove{
-
-
-from{
-
-transform:scale(1);
-
-}
-
-
-to{
-
-transform:scale(1.2);
-
-}
-
-
-}
-
-
-
-.card{
-
-
-position:relative;
-
-width:400px;
-
-padding:35px;
-
-background:
-rgba(255,255,255,0.15);
-
-
-backdrop-filter:blur(15px);
-
-
-border-radius:25px;
-
-
-box-shadow:
-0 20px 40px rgba(0,0,0,0.2);
-
-
-animation:slide 0.8s;
-
-
-color:white;
-
-
-}
-
-
-
-@keyframes slide{
-
-
-from{
-
-opacity:0;
-
-transform:translateY(50px);
-
-}
-
-
-to{
-
-opacity:1;
-
-transform:translateY(0);
-
-}
-
-
-}
-
-
 
 
 h1{
 
-text-align:center;
-
-margin-bottom:10px;
-
-}
-
-
-.subtitle{
-
-
-text-align:center;
-
-margin-bottom:25px;
-
-opacity:.8;
+    text-align:center;
+    margin-bottom:20px;
 
 }
-
 
 
 input{
 
+    width:100%;
 
-width:100%;
+    padding:12px;
 
-padding:15px;
-
-margin:10px 0;
-
-
-border:none;
-
-outline:none;
-
-
-border-radius:15px;
-
-
-background:white;
-
-
-font-size:15px;
-
+    margin:10px 0;
 
 }
-
-
 
 
 button{
 
+    width:100%;
 
-width:100%;
+    padding:12px;
 
-padding:14px;
+    background:#2563eb;
 
+    color:white;
 
-border:none;
+    border:none;
 
+    border-radius:5px;
 
-border-radius:15px;
-
-
-background:#111827;
-
-
-color:white;
-
-
-font-size:16px;
-
-
-cursor:pointer;
-
-
-transition:.3s;
-
+    cursor:pointer;
 
 }
-
-
-
-button:hover{
-
-
-transform:translateY(-3px);
-
-
-background:#000;
-
-
-}
-
-
-
-a{
-
-color:#fff;
-
-font-weight:600;
-
-}
-
-
-
-p{
-
-text-align:center;
-
-margin-top:20px;
-
-}
-
-
-
-
-/* Todo */
-
-
-.todo-card{
-
-width:500px;
-
-}
-
 
 
 .header{
 
+    display:flex;
 
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
+    justify-content:space-between;
 
 }
-
 
 
 .logout{
 
+    width:auto;
 
-width:90px;
-
-background:#ef4444;
-
+    background:red;
 
 }
 
 
+.todo-input{
 
-.add-box{
+    display:flex;
 
-
-display:flex;
-
-gap:10px;
-
-margin-top:20px;
-
+    gap:10px;
 
 }
 
 
+.todo-input button{
 
-.add-box button{
-
-
-width:60px;
-
+    width:100px;
 
 }
-
 
 
 li{
 
+    list-style:none;
 
-list-style:none;
+    background:#eee;
 
+    padding:12px;
 
-margin-top:15px;
+    margin-top:10px;
 
+    display:flex;
 
-padding:15px;
-
-
-background:
-rgba(255,255,255,.2);
-
-
-border-radius:15px;
-
-
-display:flex;
-
-
-justify-content:space-between;
-
-
-animation:pop .4s;
-
+    justify-content:space-between;
 
 }
-
-
-
-@keyframes pop{
-
-
-from{
-
-transform:scale(.8);
-
-opacity:0;
-
-}
-
-
-to{
-
-transform:scale(1);
-
-opacity:1;
-
-}
-
-
-}
-
 
 
 .delete{
 
+    width:auto;
 
-width:auto;
-
-padding:8px 12px;
-
-background:#ef4444;
-
+    background:red;
 
 }
