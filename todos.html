@@ -1,42 +1,65 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Todo List</title>
-    <link rel="stylesheet" href="style.css">
+
+<title>Todos</title>
+
+<link rel="stylesheet" href="style.css">
+
 </head>
-<body>
+
+
+<body onload="checkLogin()">
+
 
 <div class="container">
 
-    <h2>My Todos</h2>
 
-    <button class="logout-btn"
-            onclick="logout()">
-        Logout
-    </button>
+<div class="header">
 
-    <div id="todo-list" class="todo-cards">
-        <p id="empty-message">
-            Loading your todos...
-        </p>
-    </div>
+<h1>
+My Todos
+</h1>
 
-    <div class="add-todo">
 
-        <input type="text"
-               id="new-todo"
-               placeholder="Add a new todo"
-               onkeypress="if(event.key==='Enter') addTodo()">
+<button class="logout"
+onclick="logout()">
+Logout
+</button>
 
-        <button onclick="addTodo()">
-            Add
-        </button>
-
-    </div>
 
 </div>
 
+
+
+<div class="todo-input">
+
+
+<input id="todoInput"
+       placeholder="Enter task">
+
+
+<button onclick="addTodo()">
+Add
+</button>
+
+
+</div>
+
+
+
+<ul id="todoList"></ul>
+
+
+
+</div>
+
+
+
 <script src="main.js"></script>
 
+
 </body>
+
 </html>
