@@ -1,51 +1,83 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="en">
+
 
 <head>
 
-<title>Register</title>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0">
+
+
+<title>My Todos</title>
+
 
 <link rel="stylesheet" href="style.css">
+
 
 </head>
 
 
-<body>
 
-
-<div class="container">
-
-
-<h1>Register</h1>
-
-
-<input id="name"
-       placeholder="Name">
-
-
-<input id="email"
-       type="email"
-       placeholder="Email">
-
-
-<input id="password"
-       type="password"
-       placeholder="Password">
+<body onload="loadTodos()">
 
 
 
-<button onclick="register()">
-Register
+<div class="background"></div>
+
+
+<div class="card todo-card">
+
+
+
+<div class="header">
+
+
+<h1>
+My Tasks ✅
+</h1>
+
+
+<button class="logout"
+onclick="logout()">
+
+Logout
+
 </button>
 
 
+</div>
 
-<p>
-Already have account?
-<a href="index.html">
-Login
-</a>
-</p>
+
+
+
+<div class="add-box">
+
+
+<input
+id="todoTitle"
+placeholder="What needs to be done?">
+
+
+<button onclick="addTodo()">
+
++
+
+</button>
+
+
+</div>
+
+
+
+
+<ul id="todoList">
+
+</ul>
+
+
 
 
 </div>
