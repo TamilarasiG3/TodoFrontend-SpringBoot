@@ -165,40 +165,33 @@ function addTodo() {
     const title =
         document.getElementById("new-todo").value;
 
+    console.log("Adding:", title);
+
     const token =
         localStorage.getItem("token");
-
-    if (!title) {
-        alert("Enter a task");
-        return;
-    }
 
     fetch(`${SERVER_URL}/todo/create`, {
         method: "POST",
         headers: {
-            "Content-Type":
-            "application/json",
-            "Authorization":
-            `Bearer ${token}`
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
         },
         body: JSON.stringify({
-            title,
+            title: title,
             description: title,
             isCompleted: false
         })
     })
     .then(response => {
-
-        if (!response.ok) {
-            throw new Error("Failed to add todo");
-        }
-
-        document.getElementById("new-todo").value = "";
-
+        console.log("Status:", response.status);
+        return response.json();
+    })
+    .then(data => {
+        console.log("Created:", data);
         loadTodos();
     })
     .catch(error => {
-        alert(error.message);
+        console.error(error);
     });
 }
 
