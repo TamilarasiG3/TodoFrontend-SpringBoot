@@ -1,59 +1,45 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="en">
 
 <head>
-
-<title>My Todos</title>
-
-<link rel="stylesheet" href="style.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Todos</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 
 <body>
 
+<div class="todo-wrapper">
 
-<div class="container todo-container">
+```
+<div class="todo-header">
+    <h1>My Todos</h1>
 
-
-<h2>
-My Todos
-</h2>
-
+    <button class="logout-btn" onclick="logout()">
+        Logout
+    </button>
+</div>
 
 <div class="add-todo">
 
-<input 
-id="new-todo"
-placeholder="Add a new todo">
+    <input
+        id="new-todo"
+        placeholder="Add a new task">
 
-
-<button onclick="addTodo()">
-Add
-</button>
-
+    <button onclick="addTodo()">
+        Add
+    </button>
 
 </div>
 
-
-
-<div id="todo-list">
-
-</div>
-
-
-
-<button class="logout" onclick="logout()">
-Logout
-</button>
-
+<div id="todo-list"></div>
+```
 
 </div>
-
 
 <script src="main.js"></script>
 
-
 </body>
-
 </html>

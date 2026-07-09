@@ -1,408 +1,270 @@
 const SERVER_URL = "https://todo-prnm.onrender.com";
 
-
 // REGISTER
 
-function register(){
+function register() {
 
-    let email =
-    document.getElementById("email").value;
+    const email =
+        document.getElementById("email").value;
 
-    let password =
-    document.getElementById("password").value;
+    const password =
+        document.getElementById("password").value;
 
+    if (!email || !password) {
+        alert("Please fill all fields");
+        return;
+    }
 
-    fetch(`${SERVER_URL}/auth/register`,
-    {
-
-        method:"POST",
-
-        headers:{
-            "Content-Type":"application/json"
+    fetch(`${SERVER_URL}/auth/register`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
         },
-
-        body:JSON.stringify({
+        body: JSON.stringify({
             email,
             password
         })
-
     })
+    .then(response => {
 
-    .then(response=>{
-
-        if(response.ok){
-
-            alert("Registration Successful");
-
-            window.location.href="index.html";
-
-        }
-        else{
-
-            alert("Email already exists");
-
+        if (!response.ok) {
+            throw new Error("Registration failed");
         }
 
+        alert("Registration Successful");
+
+        window.location.href = "index.html";
+    })
+    .catch(error => {
+        alert(error.message);
     });
-
 }
-
-
-
 
 
 // LOGIN
 
+function login() {
 
-function login(){
+    const email =
+        document.getElementById("email").value;
 
-    let email =
-    document.getElementById("email").value;
+    const password =
+        document.getElementById("password").value;
 
-
-    let password =
-    document.getElementById("password").value;
-
-
-
-    fetch(`${SERVER_URL}/auth/login`,
-    {
-
-        method:"POST",
-
-        headers:{
-            "Content-Type":"application/json"
+    fetch(`${SERVER_URL}/auth/login`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
         },
-
-
-        body:JSON.stringify({
+        body: JSON.stringify({
             email,
             password
         })
-
-
     })
+    .then(response => {
 
-
-    .then(response=>{
-
-
-        if(!response.ok){
-
-            throw new Error("Login failed");
-
+        if (!response.ok) {
+            throw new Error("Invalid Login");
         }
 
-
         return response.json();
-
-
     })
-
-
-    .then(data=>{
-
+    .then(data => {
 
         localStorage.setItem(
             "token",
             data.token
         );
 
-
-        window.location.href="todos.html";
-
-
+        window.location.href =
+            "todos.html";
     })
-
-
-    .catch(()=>{
-
-        alert("Invalid Login");
-
+    .catch(error => {
+        alert(error.message);
     });
-
-
 }
-
-
-
-
 
 
 // LOAD TODOS
 
+function loadTodos() {
 
-function loadTodos(){
+    const token =
+        localStorage.getItem("token");
 
+    if (!token) {
+        window.location.href =
+            "index.html";
+        return;
+    }
 
-let token =
-localStorage.getItem("token");
+    fetch(`${SERVER_URL}/todo/all`, {
+        headers: {
+            "Authorization":
+            `Bearer ${token}`
+        }
+    })
+    .then(response => {
 
+        if (!response.ok) {
+            throw new Error(
+                "Failed to load todos"
+            );
+        }
 
+        return response.json();
+    })
+    .then(todos => {
 
-fetch(`${SERVER_URL}/todo/all`,
-{
+        const list =
+            document.getElementById("todo-list");
 
-headers:{
+        list.innerHTML = "";
 
-"Authorization":
-`Bearer ${token}`
+        todos.forEach(todo => {
 
+            const card =
+                document.createElement("div");
+
+            card.className =
+                "todo-card";
+
+            card.innerHTML = `
+                <div class="todo-left">
+                    <input
+                        type="checkbox"
+                        ${todo.isCompleted ? "checked" : ""}
+                        onchange="updateTodo(${todo.id}, this.checked)">
+                    
+                    <span class="${todo.isCompleted ? "completed" : ""}">
+                        ${todo.title}
+                    </span>
+                </div>
+
+                <button class="delete-btn"
+                    onclick="deleteTodo(${todo.id})">
+                    Delete
+                </button>
+            `;
+
+            list.appendChild(card);
+
+        });
+
+    })
+    .catch(error => {
+        console.error(error);
+    });
 }
-
-
-})
-
-.then(response=>response.json())
-
-
-.then(todos=>{
-
-
-let list =
-document.getElementById("todo-list");
-
-
-list.innerHTML="";
-
-
-
-todos.forEach(todo=>{
-
-
-let card =
-document.createElement("div");
-
-
-card.className="todo-card";
-
-
-
-card.innerHTML=`
-
-<input type="checkbox"
-${todo.isCompleted ? "checked":""}
-onchange="updateTodo(${todo.id},this.checked)">
-
-
-
-<span>
-${todo.title}
-</span>
-
-
-<button onclick="deleteTodo(${todo.id})">
-Delete
-</button>
-
-
-`;
-
-
-
-list.appendChild(card);
-
-
-
-});
-
-
-});
-
-
-}
-
-
-
-
 
 
 // ADD TODO
 
+function addTodo() {
 
-function addTodo(){
+    const title =
+        document.getElementById("new-todo").value;
 
+    const token =
+        localStorage.getItem("token");
 
-let title =
-document.getElementById("new-todo").value;
+    if (!title) {
+        alert("Enter a task");
+        return;
+    }
 
+    fetch(`${SERVER_URL}/todo/create`, {
+        method: "POST",
+        headers: {
+            "Content-Type":
+            "application/json",
+            "Authorization":
+            `Bearer ${token}`
+        },
+        body: JSON.stringify({
+            title,
+            description: title,
+            isCompleted: false
+        })
+    })
+    .then(response => {
 
+        if (!response.ok) {
+            throw new Error("Failed to add todo");
+        }
 
-let token =
-localStorage.getItem("token");
+        document.getElementById("new-todo").value = "";
 
-
-
-fetch(`${SERVER_URL}/todo/create`,
-{
-
-
-method:"POST",
-
-
-headers:{
-
-
-"Content-Type":
-"application/json",
-
-
-"Authorization":
-`Bearer ${token}`
-
-
-},
-
-
-body:JSON.stringify({
-
-title:title,
-
-description:title,
-
-isCompleted:false
-
-})
-
-
-})
-
-.then(()=>{
-
-
-document.getElementById(
-"new-todo"
-).value="";
-
-
-loadTodos();
-
-
-});
-
-
+        loadTodos();
+    })
+    .catch(error => {
+        alert(error.message);
+    });
 }
 
 
+// UPDATE
 
+function updateTodo(id, status) {
 
+    const token =
+        localStorage.getItem("token");
 
-
-
-// UPDATE TODO
-
-
-function updateTodo(id,status){
-
-
-let token =
-localStorage.getItem("token");
-
-
-
-fetch(`${SERVER_URL}/todo/${id}`,
-{
-
-
-method:"PUT",
-
-
-headers:{
-
-
-"Content-Type":
-"application/json",
-
-
-"Authorization":
-`Bearer ${token}`
-
-
-},
-
-
-body:JSON.stringify({
-
-isCompleted:status
-
-})
-
-
-});
-
-
+    fetch(`${SERVER_URL}/todo/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type":
+            "application/json",
+            "Authorization":
+            `Bearer ${token}`
+        },
+        body: JSON.stringify({
+            isCompleted: status
+        })
+    });
 }
 
 
+// DELETE
 
+function deleteTodo(id) {
 
+    const token =
+        localStorage.getItem("token");
 
-
-
-
-// DELETE TODO
-
-
-function deleteTodo(id){
-
-
-let token =
-localStorage.getItem("token");
-
-
-
-fetch(`${SERVER_URL}/todo/${id}`,
-{
-
-
-method:"DELETE",
-
-
-headers:{
-
-
-"Authorization":
-`Bearer ${token}`
-
-
+    fetch(`${SERVER_URL}/todo/${id}`, {
+        method: "DELETE",
+        headers: {
+            "Authorization":
+            `Bearer ${token}`
+        }
+    })
+    .then(() => loadTodos());
 }
 
 
-})
+// LOGOUT
 
+function logout() {
 
-.then(()=>loadTodos());
+    localStorage.removeItem("token");
 
-
+    window.location.href =
+        "index.html";
 }
-
-
-
-
-
-
-function logout(){
-
-localStorage.removeItem("token");
-
-window.location.href="index.html";
-
-}
-
-
-
 
 
 document.addEventListener(
-"DOMContentLoaded",
-()=>{
+    "DOMContentLoaded",
+    () => {
 
+        if (
+            document.getElementById(
+                "todo-list"
+            )
+        ) {
+            loadTodos();
+        }
 
-if(document.getElementById("todo-list")){
-
-loadTodos();
-
-}
-
-
-});
+    }
+);

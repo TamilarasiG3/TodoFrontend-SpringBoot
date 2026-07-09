@@ -1,44 +1,43 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="en">
+
 <head>
-    <title>Register</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="container">
+<div class="auth-card">
 
-<h2>Create Account</h2>
+```
+<h1>Create Account</h1>
+<p class="subtitle">Start organizing your tasks</p>
 
+<input
+    type="email"
+    id="email"
+    placeholder="Enter Email">
 
-<input 
-type="email" 
-id="email"
-placeholder="Email">
-
-
-<input 
-type="password"
-id="password"
-placeholder="Password">
-
+<input
+    type="password"
+    id="password"
+    placeholder="Enter Password">
 
 <button onclick="register()">
-Register
+    Register
 </button>
 
-
-<p>
-Already have account?
-<a href="index.html">
-Login
-</a>
+<p class="link-text">
+    Already have an account?
+    <a href="index.html">Login</a>
 </p>
-
+```
 
 </div>
-
 
 <script src="main.js"></script>
 
