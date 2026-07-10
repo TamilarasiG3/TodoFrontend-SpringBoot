@@ -1,4 +1,4 @@
-const SERVER_URL = "https://todo-prnm.onrender.com";
+const SERVER_URL = "http://localhost:8081";
 
 // REGISTER
 
